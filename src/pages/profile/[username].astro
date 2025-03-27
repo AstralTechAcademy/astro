@@ -1,0 +1,53 @@
+---
+import ActivityCard from '../../components/ActivityCard.astro';
+import Layout from '../../layouts/Layout.astro';
+import { getSession } from 'auth-astro/server';
+
+const { username } = Astro.params;
+
+const likes = 150
+
+const session = await getSession(Astro.request);
+
+//if (!session) return Astro.redirect("/")
+
+const activities = [
+	{"name": "Actividad 1", "url": "/activity/Actividad 1"},
+	{"name": "Actividad 2", "url": "/activity/Actividad 2"}
+]
+
+async function getCertificates()
+{
+	return [{"filename": "certificate1", "url": "https://storage.cloud.google.com/beve-386109-authorizations/certificadoDS-1.pdf"},{"filename": "certificate2", "url": "https://storage.cloud.google.com/beve-386109-authorizations/certificadoDS-1.pdf"}]
+}
+
+const certficates = await getCertificates()
+
+---
+
+<Layout >
+  	<div class="flex-1 ml-25 mt-25">
+		<h1 class="text-3xl font-medium">Bienvenido {username}</h1>
+
+		<div class="mt-5">
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+			<a class="text-m back-button">
+				<i class="fas fa-heart"  style="color: red;"></i>
+				{likes}
+			</a>
+		</div>
+
+		<h2 class="mt-10 text-2xl ">Mis actividades</h1>
+
+		<ul class="mt-10 flex gap-5">
+			{activities.map((data) => <ActivityCard name={data.name} url={data.url}></ActivityCard>)}
+		</ul>
+
+		<h2 class="mt-10 text-2xl">Mis certificados de delitos sexuales</h1>
+
+		<ul class="mt-10 flex gap-5">
+			{certficates.map((data) => <ActivityCard name={data.filename} url={data.url}></ActivityCard>)}
+		</ul>
+	</div>
+</Layout>
