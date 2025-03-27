@@ -18,7 +18,7 @@ const activities = [
 
 async function getCertificates()
 {
-	return [{"filename": "certificate1", "url": "https://storage.cloud.google.com/beve-386109-authorizations/certificadoDS-1.pdf"},{"filename": "certificate2", "url": "https://storage.cloud.google.com/beve-386109-authorizations/certificadoDS-1.pdf"}]
+	return [{"filename": "certificate1", "url": "https://storage.googleapis.com/beve-23eqr-certificados/certificadoDS-1.pdf"},{"filename": "certificate2", "url": "https://storage.googleapis.com/beve-23eqr-certificados/certificadoDS-1.pdf"}]
 }
 
 const certficates = await getCertificates()
@@ -41,13 +41,13 @@ const certficates = await getCertificates()
 		<h2 class="mt-10 text-2xl ">Mis actividades</h1>
 
 		<ul class="mt-10 flex gap-5">
-			{activities.map((data) => <ActivityCard name={data.name} url={data.url}></ActivityCard>)}
+			{activities.map((data) => <ActivityCard name={data.name} url={data.url} icon="https://storage.googleapis.com/beve-23eqr/beve_logo.png"></ActivityCard>)}
 		</ul>
 
 		<h2 class="mt-10 text-2xl">Mis certificados de delitos sexuales</h1>
 
 		<ul class="mt-10 flex gap-5">
-			{certficates.map((data) => <ActivityCard name={data.filename} url={data.url}></ActivityCard>)}
+			{certficates.map((data) => <ActivityCard name={data.filename} url={data.url} icon="https://static.vecteezy.com/system/resources/previews/017/197/488/large_2x/pdf-icon-on-transparent-background-free-png.png"></ActivityCard>)}
 		</ul>
 	</div>
 </Layout>

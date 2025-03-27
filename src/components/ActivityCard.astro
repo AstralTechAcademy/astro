@@ -1,10 +1,10 @@
 ---
-const { name , url} = Astro.props
+const { name , url, icon} = Astro.props
 ---
 
-<li class="flex flex-col w-30 bg-green-100 justify-center items-center">
+<li class="flex flex-col w-30 justify-center items-center">
     <a href={url}>
-        <img src="https://lh4.googleusercontent.com/AyJeskWVoFwNUVKFp9vnw8IldzjkxVWp1MvChdT3-bGTZ19LUK2fQoCJ8KHIs_XiD3vaSxABOB0VCUOJG9Eoq1s=w16383" class="w-20">
+        <img src={icon} class="w-20">
         <p class="mt-3">{name}</p>
     </a>
 </li>
